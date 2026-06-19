@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { Code2, Brain, Laptop, GraduationCap } from "lucide-react";
 import { Reveal } from "@/components/reveal";
-import { Card } from "@/components/ui/card";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { SectionLabel } from "@/components/section-label";
 
 const features = [
@@ -59,7 +59,7 @@ export function Features() {
               whileHover={{ y: -6 }}
               transition={{ type: "spring", stiffness: 300, damping: 22 }}
             >
-              <Card className="group h-full transition-colors hover:border-[color-mix(in_oklab,var(--teal)_50%,var(--border))]">
+              <SpotlightCard className="h-full transition-colors hover:border-[color-mix(in_oklab,var(--teal)_50%,var(--border))]">
                 <div
                   className="flex size-12 items-center justify-center rounded-xl"
                   style={{
@@ -75,7 +75,7 @@ export function Features() {
                 <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
                   {f.body}
                 </p>
-              </Card>
+              </SpotlightCard>
             </motion.div>
           ))}
         </Reveal>

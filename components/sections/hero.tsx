@@ -4,6 +4,8 @@ import { useEffect, useMemo, useReducer } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight, Wifi } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Scramble } from "@/components/scramble";
+import { CountUp } from "@/components/count-up";
 
 const WHATSAPP =
   "https://wa.me/59164348616?text=Hola%20Mentor%20Class%20360%2C%20quiero%20empezar%20mis%20clases";
@@ -81,7 +83,7 @@ export function Hero() {
             Aprende a programar
             <br />
             de cero a{" "}
-            <span className="text-gradient">nivel avanzado</span>.
+            <Scramble text="nivel avanzado" className="text-gradient" />.
           </motion.h1>
 
           <motion.p
@@ -119,13 +121,22 @@ export function Hero() {
             className="mt-10 flex flex-wrap gap-x-8 gap-y-4 font-mono text-sm"
           >
             {[
-              ["20 Bs", "la hora"],
-              ["1 a 1", "atención real"],
-              ["Horario", "flexible"],
-            ].map(([k, v]) => (
-              <div key={v}>
-                <dt className="text-lg font-bold text-[var(--fg)]">{k}</dt>
-                <dd className="text-[var(--muted)]">{v}</dd>
+              { count: 20, suffix: " Bs", label: "la hora" },
+              { value: "1 a 1", label: "atención real" },
+              { value: "Horario", label: "flexible" },
+            ].map((s) => (
+              <div key={s.label}>
+                <dt className="text-lg font-bold text-[var(--fg)]">
+                  {typeof s.count === "number" ? (
+                    <>
+                      <CountUp to={s.count} />
+                      {s.suffix}
+                    </>
+                  ) : (
+                    s.value
+                  )}
+                </dt>
+                <dd className="text-[var(--muted)]">{s.label}</dd>
               </div>
             ))}
           </motion.dl>

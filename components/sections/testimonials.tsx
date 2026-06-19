@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import { Star } from "lucide-react";
 import { Reveal } from "@/components/reveal";
-import { Card } from "@/components/ui/card";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { SectionLabel } from "@/components/section-label";
 
 const testimonials = [
@@ -48,7 +48,7 @@ export function Testimonials() {
               whileHover={{ y: -4 }}
               transition={{ type: "spring", stiffness: 300, damping: 22 }}
             >
-              <Card className="flex h-full flex-col">
+              <SpotlightCard className="h-full">
                 <div className="flex gap-0.5 text-[var(--amber)]">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star key={i} className="size-4 fill-current" />
@@ -66,7 +66,7 @@ export function Testimonials() {
                     <p className="text-xs text-[var(--muted)]">{t.role}</p>
                   </div>
                 </div>
-              </Card>
+              </SpotlightCard>
             </motion.div>
           ))}
         </Reveal>
